@@ -6,3 +6,8 @@ ADD CONSTRAINT FK_Grade
 FOREIGN KEY(StudentID)
 REFERENCES Student (ID)
 GO
+
+alter Table dbo.Grade
+add constraint [FK_Course_Student_ID]  
+FOREIGN KEY ([CourseID])  
+REFERENCES dbo.Course (ID);  
