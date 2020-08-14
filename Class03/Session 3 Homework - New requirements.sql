@@ -39,7 +39,7 @@ GROUP BY Student.FirstName, Student.LastName
 
 
 --  Find the students (using Name and Last Name) that have attended less than 20 courses and get their Min, Max and Average grade ordered by the Average Grade ascending
-SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Cast(Grade as decimal(4,2))) AverageGrade
+SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Grade) AverageGrade
 FROM Grade 
 INNER JOIN Student on Grade.StudentID = Student.ID
 GROUP BY Student.FirstName, Student.LastName
@@ -50,13 +50,13 @@ ORDER BY AverageGrade ASC
 --  For all the students (using First Name and Last Name) get their Min, Max and Average grade (Create view vv_StudentSuccess)
 CREATE VIEW vv_StudentSuccess
 AS
-SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Cast(Grade as decimal(4,2))) AverageGrade
+SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Grade) AverageGrade
 FROM Grade
 INNER JOIN Student ON Grade.StudentID = Student.ID
 GROUP BY Student.FirstName, Student.LastName
 
 --  Find all the students that have achieved less than 25% from the AchievementMaxPoints for the AchievementType  'Domasni'
-SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Cast(Grade as decimal(4,2))) AverageGrade, AchievementType.Name AchievmentType, GradeDetails.AchievementPoints
+SELECT Student.FirstName, Student.LastName,  min(Grade) MinGrade, max(Grade) MaxGrade, avg(Grade) AverageGrade, AchievementType.Name AchievmentType, GradeDetails.AchievementPoints
 FROM Grade 
 INNER JOIN Student ON Grade.StudentID = Student.ID
 INNER JOIN GradeDetails ON Grade.ID = GradeDetails.GradeID
